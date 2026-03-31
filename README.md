@@ -7,17 +7,6 @@ Publicado em: https://www.chromatic.com (link atualizado após primeiro deploy)
 
 ---
 
-## Dois ambientes
-
-**Legacy (JSF)**
-Componentes em HTML + CSS + JavaScript puro.
-Referência para telas antigas do Channel.
-
-**Angular**
-Componentes em Angular + Bootstrap 5 + Font Awesome.
-Referência para telas modernas do Channel.
-
----
 
 ## Como rodar localmente
 
@@ -46,10 +35,8 @@ O token fica salvo localmente no arquivo `.env` — nunca sobe para o GitHub.
 
 ## Estrutura do projeto
 ```
-src/legacy/          → componentes e tokens do mundo JSF
-src/angular/         → componentes e tokens do mundo Angular
-src/shared/          → fontes, ícones e assets compartilhados
-docs/                → decisões de design e anotações de mapeamento
+src/components        → componentes - header - button - table
+src/tokens            → design tokens - tipografia - cores - espaçamentos
 GEMINI.md            → contexto para o agente Antigravity
 ```
 
