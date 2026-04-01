@@ -1,4 +1,4 @@
-import './Table.css';
+﻿import './Table.css';
 import { Button } from '../button/Button.js';
 
 export default {
@@ -48,6 +48,19 @@ if (typeof window !== 'undefined') {
           icon.classList.toggle('fa-caret-down', !isOpen);
           icon.classList.toggle('fa-caret-right', isOpen);
         }
+      }
+    }
+
+    // 3. Toggle Action Submenu
+    const trigger = e.target.closest('.legacy-action-submenu-wrapper .action-icon');
+    document.querySelectorAll('.legacy-action-submenu.is-open').forEach(menu => {
+      if (trigger && menu.previousElementSibling === trigger) return;
+      menu.classList.remove('is-open');
+    });
+    if (trigger) {
+      const submenu = trigger.nextElementSibling;
+      if (submenu && submenu.classList.contains('legacy-action-submenu')) {
+        submenu.classList.toggle('is-open');
       }
     }
   });
@@ -261,4 +274,290 @@ export const AcordeonConfigurado = {
       </table>
     </div>
   `,
+};
+
+export const ComSubmenuAcoes = {
+  name: 'Com Submenu de Ações',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Padrão herdado de sistemas Channel onde muitos ícones numa mesma célula de ação são suprimidos por um ícone gatilho (geralmente opções ou engrenagem) que abre um submenu estendido (hover escuro). O exemplo abaixo engloba todo o header visual, ordenadores fixos, tooltips e krs badges.',
+      },
+    },
+  },
+  render: () => `
+<div class="table-responsive" style="overflow: visible; width: 100%;">
+        <table class="legacy-table" id="table-objetivos">
+          <thead>
+            <!-- Cabeçalho de colunas -->
+            <tr style="background:#E5E5E5;">
+              <th style="width:90px; text-align:center;">Ordem <span class="fa fa-sort"
+                  style="font-size:9px;color:#999;"></span></th>
+              <th>Nome</th>
+              <th style="width:200px;">Perspectiva</th>
+              <th style="width:160px;">Responsável</th>
+              <th style="width:70px; text-align:center;">Peso</th>
+              <th class="col-acoes">Ações</th>
+            </tr>
+            <!-- Linha de filtros -->
+            <tr style="background:#F5F5F5;">
+              <td style="text-align:center;"><input type="text" class="filter-input" style="width:56px;" /></td>
+              <td><input type="text" class="filter-input" /></td>
+              <td>
+                <select class="filter-select">
+                  <option>Todos</option>
+                  <option>Aprendizado e Crescimento</option>
+                  <option>Financeira</option>
+                  <option>Clientes</option>
+                  <option>Processos Internos</option>
+                </select>
+              </td>
+              <td><input type="text" class="filter-input" /></td>
+              <td><input type="text" class="filter-input" style="width:50px;" /></td>
+              <td style="text-align:center;">
+                <button class="btn-section" style="font-size:10px;padding:1px 6px;">Limpar</button>
+                <button class="btn-section btn-primary-action" style="font-size:10px;padding:1px 6px;">Filtrar</button>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Linha 1 — Aumentar a Receita -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Aumentar a Receita</td>
+              <td>Aprendizado e Crescimento</td>
+              <td>Elkar Almeida</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <!-- 1: Mais opções (submenu DS) -->
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="assets/img/ico_indicador_tendencia.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="assets/img/ico_causaEfeito.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="assets/img/ico-componentes.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Aumentar a Receita', 1); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- 2: Habilitar/Desabilitar -->
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" onclick="openModalConfirmacao()"
+                    style="cursor:pointer;">
+                    <img src="assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <!-- 3: Gerenciar KRs -->
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Aumentar a Receita', 1)">KR</button>
+                  <!-- 4: Editar -->
+                  <span class="action-icon" title="Editar objetivo" onclick="openModalEditarObjetivo()"
+                    style="cursor:pointer;">
+                    <img src="assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <!-- 5: Remover -->
+                  <span class="action-icon" title="Remover objetivo" onclick="openModalRemover()"
+                    style="cursor:pointer;">
+                    <img src="assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 2 — Melhorar Retenção de Clientes -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option selected>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Melhorar Retenção de Clientes</td>
+              <td>Clientes</td>
+              <td>Ana Paula Ferreira</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="assets/img/ico_indicador_tendencia.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="assets/img/ico_causaEfeito.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="assets/img/ico-componentes.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Melhorar Retenção de Clientes', 2); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Melhorar Retenção de Clientes', 2)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 3 — Reduzir Custos Operacionais -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option selected>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Reduzir Custos Operacionais</td>
+              <td>Processos Internos</td>
+              <td>Carlos Lima</td>
+              <td style="text-align:center;">1,50</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="assets/img/ico_indicador_tendencia.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="assets/img/ico_causaEfeito.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="assets/img/ico-componentes.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Reduzir Custos Operacionais', 3); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Reduzir Custos Operacionais', 3)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 4 — Expandir Presença Digital (empty state) -->
+            <tr style="background:#FFFDF5;">
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option selected>4</option>
+                </select>
+              </td>
+              <td>Expandir Presença Digital</td>
+              <td>Clientes</td>
+              <td>João Mendes</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="assets/img/ico_indicador_tendencia.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="assets/img/ico_causaEfeito.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="assets/img/ico-componentes.gif" style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Expandir Presença Digital', 4); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs) — sem KRs cadastrados"
+                    onclick="openDrawer('Expandir Presença Digital', 4)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+`,
 };

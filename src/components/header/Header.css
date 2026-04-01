@@ -4,7 +4,7 @@
  */
 
 .legacy-header {
-  height: var(--chn-height-header-top);
+  height: 68px;
   background: linear-gradient(to bottom, #FDFDFD 0%, #ECECEC 100%);
   border-bottom: 2px solid var(--chn-color-primary-navbar);
   display: flex;
@@ -25,7 +25,7 @@
 .legacy-header-logos {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .logo-jexperts {
@@ -63,6 +63,13 @@
   /* Maior espaçamento conforme referência */
 }
 
+/* Forçar renderização de ícones (.fa) garantindo que nenhum override global os quebre */
+.legacy-header-actions .fa {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  display: inline-block;
+}
+
 .release-notes-trigger {
   display: flex;
   align-items: center;
@@ -77,14 +84,18 @@
 }
 
 .release-text {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: bold;
   color: #000;
 }
 
 .grid-icon {
-  font-size: 16px;
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
   color: #000;
+  display: inline-block;
 }
 
 .notification-container {
@@ -95,8 +106,12 @@
 }
 
 .bell-icon {
-  font-size: 18px;
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
   color: #000;
+  display: inline-block;
 }
 
 .notification-badge {
@@ -117,8 +132,12 @@
 }
 
 .dropdown-caret {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
   font-size: 10px;
   color: #666;
+  display: inline-block;
 }
 
 /* Profile */

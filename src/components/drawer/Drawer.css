@@ -1,0 +1,7 @@
+﻿.story-drawer {
+  position: absolute !important;
+  transform: translateX(0) !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+}

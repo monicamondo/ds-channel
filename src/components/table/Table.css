@@ -229,3 +229,49 @@
   height: 12px;
   border: 1px solid var(--chn-color-gray-400);
 }
+
+/* Table Action Submenu (Dropdown for actions column) */
+.legacy-action-submenu-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.legacy-action-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Drops to the left from the triggering icon */
+  background: #EBEBEB;
+  border: 1px solid #A0A0A0;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+  z-index: 1000;
+  min-width: 160px;
+  padding: 0;
+}
+
+.legacy-action-submenu.is-open {
+  display: block;
+}
+
+.legacy-action-submenu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--chn-font-family);
+  text-decoration: none;
+}
+
+.legacy-action-submenu-item:hover {
+  background: #606970;
+  color: #ffffff;
+}
+
+.legacy-action-submenu-item img {
+  width: 16px;
+}
+

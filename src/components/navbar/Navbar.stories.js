@@ -106,6 +106,58 @@ const dropdownMeuChannel = `
   </div>
 `;
 
+const dropdownPlanoEstrategico = `
+  <div class="navbar-dropdown">
+    <!-- Coluna 1: links diretos -->
+    <div class="navbar-dropdown-col">
+      <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos</a>
+      <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Diretrizes</a>
+      <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Mapa estratégico</a>
+      <a class="navbar-direct-link" href="#"><i class="fa fa-bar-chart"></i> Reuniões</a>
+    </div>
+
+    <div class="navbar-col-divider"></div>
+
+    <!-- Coluna 2: Desempenho e Configurações -->
+    <div class="navbar-dropdown-col col-wide">
+      <div class="navbar-section">
+        <div class="navbar-section-title">
+          <i class="fa fa-adjust"></i> Desempenho
+        </div>
+        <ul class="navbar-section-items">
+          <li><a href="#">Planejamento de metas</a></li>
+          <li><a href="#">Medições de indicadores</a></li>
+        </ul>
+      </div>
+      <div class="navbar-section" style="margin-top: 12px;">
+        <div class="navbar-section-title">
+          <i class="fa fa-cog"></i> Configurações
+        </div>
+        <ul class="navbar-section-items">
+          <li><a href="#">Revisões</a></li>
+          <li><a href="#">Perspectivas</a></li>
+          <li><a href="#">Temas Estratégicos</a></li>
+          <li><a href="#" class="link-more">Ver mais</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="navbar-col-divider"></div>
+
+    <!-- Coluna 3: Relatórios -->
+    <div class="navbar-dropdown-col col-wide">
+      <div class="navbar-section">
+        <div class="navbar-section-title">
+          <i class="fa fa-list"></i> Relatórios
+        </div>
+        <ul class="navbar-section-items">
+          <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+`;
+
 const dropdownEstrategia = `
   <div class="navbar-dropdown">
     <!-- Coluna 1: links diretos -->
@@ -284,8 +336,22 @@ const dropdownAdministracao = `
    Builder da navbar
    ───────────────────────────────────────────────────────────── */
 
-function buildNavbar(openMenu = null) {
-  const items = [
+function buildNavbar(openMenu = null, contextMenu = null) {
+  const items = [];
+
+  // Se houver um menu de contexto como Plano Estratégico ativo na tela
+  if (contextMenu === 'plano-estrategico') {
+    items.push({
+      id: 'plano-estrategico',
+      iconFa: 'fa-puzzle-piece',
+      label: 'Plano estratégico',
+      dropdown: dropdownPlanoEstrategico, // Vinculando o dropdown correto agora
+      isActiveOverride: true
+    });
+  }
+
+  // Menus padrão do sistema
+  items.push(
     {
       id: 'meu-channel',
       iconSvg: '/assets/img/meu_channel_menul.svg',
@@ -316,14 +382,16 @@ function buildNavbar(openMenu = null) {
       label: 'Administração',
       dropdown: dropdownAdministracao,
     },
-  ];
+  );
 
   const itemsHtml = items
     .map(
       (item) => `
-    <div class="navbar-item${openMenu === item.id ? ' is-open' : ''}" data-menu="${item.id}">
+    <div class="navbar-item${openMenu === item.id ? ' is-open' : ''}${item.isActiveOverride ? ' is-active-page' : ''}" data-menu="${item.id}">
       <div class="navbar-item-trigger">
-        <img src="${item.iconSvg}" alt="${item.label}" class="navbar-module-icon" />
+        ${item.iconSvg 
+          ? `<img src="${item.iconSvg}" alt="${item.label}" class="navbar-module-icon" />` 
+          : `<i class="fa ${item.iconFa}" style="color:#F97316;"></i>`}
         ${item.label}
       </div>
       ${item.dropdown}
@@ -391,14 +459,51 @@ function attachNavbarBehavior() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Stories
+   Stories - Navbar Padrão
    ───────────────────────────────────────────────────────────── */
 
-/** Estado padrão — nenhum menu aberto */
 export const Default = {
-  name: 'Default (fechado)',
+  name: 'Padrão (fechado)',
   render: () => buildNavbar(),
 };
+
+/* ─────────────────────────────────────────────────────────────
+   Stories - Navbar com Contexto
+   ───────────────────────────────────────────────────────────── */
+
+export const ContextoEstrategicoFechado = {
+  name: 'Contexto: Plano estratégico (fechado)',
+  render: () => buildNavbar(null, 'plano-estrategico'),
+  parameters: {
+    docs: {
+      description: { story: 'Menu Navbar carregado com o ambiente contextual do plano estratégico sem abrir o menu.' },
+    },
+  },
+};
+
+export const ContextoEstrategicoAberto = {
+  name: 'Contexto: Plano estratégico (aberto)',
+  render: () => buildNavbar('plano-estrategico', 'plano-estrategico'),
+  parameters: {
+    docs: {
+      description: { story: 'Exibe o menu contextual dinâmico já expandido demonstrando os links e diretrizes.' },
+    },
+  },
+};
+
+export const ContextoEstrategicoInterativo = {
+  name: '▶ Contexto: Plano estratégico (Interativo)',
+  render: () => buildNavbar(null, 'plano-estrategico') + attachNavbarBehavior(),
+  parameters: {
+    docs: {
+      description: { story: 'Testa a abertura e fechamento das abas do Navbar com módulo contextual carregado.' },
+    },
+  },
+};
+
+/* ─────────────────────────────────────────────────────────────
+   Módulos Padrões Abertos
+   ───────────────────────────────────────────────────────────── */
 
 /** Meu Channel aberto */
 export const MeuChannel = {

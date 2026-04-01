@@ -7,14 +7,14 @@
 .legacy-navbar {
   background-color: var(--chn-color-navbar);
   /* #2F313E */
-  height: var(--chn-height-menu-bar);
-  /* 31px */
+  height: 40px;
+  /*40px */
   display: flex;
   align-items: stretch;
   font-family: var(--chn-font-family-menu);
   /* Tahoma */
   font-size: var(--chn-font-size-base);
-  /* 12px */
+  /* 14px */
   position: relative;
   user-select: none;
   flex-shrink: 0;
@@ -23,6 +23,7 @@
 /* ─── Botão Home ──────────────────────────────────────────── */
 .navbar-home {
   display: flex;
+  font-size: 18px;
   align-items: center;
   justify-content: center;
   padding: 0 10px;
@@ -63,10 +64,27 @@
   color: #2F313E;
 }
 
-/* Estado aberto: mesma cor do hover, fundindo visualmente com o dropdown */
+/* Estado open */
 .navbar-item.is-open>.navbar-item-trigger {
   background: #F4F5F6;
   color: #2F313E;
+  border-bottom: 2px solid #F4F5F6;
+}
+
+/* Estado active-page (padrão transparente, texto laranja) */
+.navbar-item.is-active-page>.navbar-item-trigger {
+  background: transparent;
+  color: #F97316 !important;
+  border-bottom: none;
+}
+.navbar-item.is-active-page>.navbar-item-trigger .fa {
+  color: #F97316 !important;
+}
+
+/* Estado active-page em hover ou aberto (dropdown expandido) */
+.navbar-item.is-active-page:hover>.navbar-item-trigger,
+.navbar-item.is-active-page.is-open>.navbar-item-trigger {
+  background: #F4F5F6;
   border-bottom: 2px solid #F4F5F6;
 }
 
@@ -76,8 +94,8 @@
 
 /* Ícones SVG dos módulos na navbar */
 .navbar-item-trigger .navbar-module-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   filter: brightness(0) invert(0.8);
   /* cinza claro no fundo escuro */
