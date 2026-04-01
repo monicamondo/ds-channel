@@ -1,4 +1,5 @@
 import './Modal.css';
+import './ModalKR.css';
 import '../table/Table.css';
 import { Button } from '../button/Button.js';
 
@@ -213,6 +214,88 @@ export const EditarObjetivo = {
         <div class="legacy-modal-footer">
           ${Button({ label: 'Cancelar', variant: 'secondary' })}
           ${Button({ label: 'Salvar', variant: 'primary' })}
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+export const ModalCriarKR = {
+  name: 'Modal Criar KR',
+  parameters: {
+    docs: {
+      description: { story: 'Modal específico para criação/edição de Key Results.' },
+    },
+  },
+  render: () => `
+    <div style="width:600px; position:relative; background:#fafafa; min-height:450px; display:flex; padding:20px; font-family: Tahoma, Arial, sans-serif;">
+      <!-- Apenas uma preview da box (sem fixed overlay) -->
+      <div class="modal-box" style="position:relative; margin:auto;">
+        <div class="modal-title">
+          <span id="modal-kr-title">Incluir Key Result</span>
+          <button class="modal-close">✕</button>
+        </div>
+        <div class="modal-body">
+          <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; color: #666; letter-spacing: 0.5px; margin-bottom: 8px;">Selecione o Tipo de KR</div>
+          <div class="kr-type-radio" style="margin-bottom: 16px; display: flex; gap: 16px; padding-bottom: 0;">
+            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer; color: #222; font-size: 11px;">
+              <input type="radio" name="krType" value="quantitativo" checked /> 
+              Quantitativo
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer; color: #222; font-size: 11px;">
+              <input type="radio" name="krType" value="qualitativo" /> 
+              Qualitativo
+            </label>
+          </div>
+
+          <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; color: #666; letter-spacing: 0.5px; margin-bottom: 12px; border-bottom: 1px solid #DDDDDD; padding-bottom: 4px;">Configure o KR</div>
+          <div style="min-height: 280px;">
+            <div class="kr-type-panel active" id="panel-quantitativo" style="display:block;">
+              <div class="modal-field">
+                <label>Nome *</label>
+                <input type="text" placeholder="Ex.: Taxa de crescimento de receita" />
+              </div>
+              <div class="modal-row">
+                <div class="modal-field">
+                  <label>Unidade de Medida *</label>
+                  <select>
+                    <option>%</option>
+                    <option>R$</option>
+                    <option>Unidades</option>
+                    <option>Pontos</option>
+                    <option>Horas</option>
+                  </select>
+                </div>
+                <div class="modal-field">
+                  <label>Polaridade *</label>
+                  <select>
+                    <option>Maior é melhor</option>
+                    <option>Menor é melhor</option>
+                    <option>Igual à meta</option>
+                  </select>
+                </div>
+                <div class="modal-field">
+                  <label>Peso</label>
+                  <input type="number" value="1" min="0" step="0.01" />
+                </div>
+              </div>
+              <div class="modal-row">
+                <div class="modal-field">
+                  <label>Baseline</label>
+                  <input type="number" value="0" step="0.01" />
+                </div>
+                <div class="modal-field">
+                  <label>Meta *</label>
+                  <input type="number" placeholder="Valor alvo" step="0.01" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn-section" style="font-family:Tahoma,Arial,sans-serif;font-size:11px;padding:2px 8px;border:1px solid #A0A0A0;background:#E8E8E8;cursor:pointer;color:#000;">Cancelar</button>
+            <button class="btn-section btn-primary-action" style="font-family:Tahoma,Arial,sans-serif;font-size:11px;padding:2px 8px;border:1px solid #4e565c;background:#606970;cursor:pointer;color:#fff;">Salvar</button>
+          </div>
         </div>
       </div>
     </div>

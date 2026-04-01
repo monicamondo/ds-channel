@@ -1,0 +1,105 @@
+/* ─── MODAL Cadastro KR ─────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 11000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-box {
+  background: #F5F5DC;
+  border: 1px solid #999;
+  width: 540px;
+  max-width: 96vw;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 11px;
+}
+
+.modal-title {
+  background: #2F313E;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 14px;
+}
+
+.modal-field {
+  margin-bottom: 10px;
+}
+
+.modal-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 11px;
+}
+
+.modal-field input[type="text"],
+.modal-field input[type="number"],
+.modal-field select,
+.modal-field textarea {
+  width: 100%;
+  border: 1px solid #C0C0C0;
+  background: #F5F5F5;
+  font-size: 11px;
+  font-family: Tahoma, Arial, sans-serif;
+  padding: 2px 5px;
+  height: 20px;
+}
+
+.modal-field textarea {
+  height: 60px;
+  resize: vertical;
+}
+
+.modal-row {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-row .modal-field {
+  flex: 1;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid #D5D5D5;
+  margin-top: 12px;
+}
+
+.kr-type-panel {
+  display: none;
+}
+
+.kr-type-panel.active {
+  display: block;
+}
