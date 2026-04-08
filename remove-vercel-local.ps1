@@ -164,7 +164,7 @@ if ($status) {
 }
 
 # 7) Remover secrets via gh (se possível)
-if (Get-Command gh -ErrorAction SilentlyContinue -and $repoFull) {
+if ((Get-Command gh -ErrorAction SilentlyContinue) -and $repoFull) {
   Write-Host "`nTentando listar secrets via gh..."
   try {
     $secretsOut = gh secret list --repo $repoFull 2>$null | Out-String
@@ -185,7 +185,7 @@ if (Get-Command gh -ErrorAction SilentlyContinue -and $repoFull) {
 }
 
 # 8) Remover webhooks via gh (se possível)
-if (Get-Command gh -ErrorAction SilentlyContinue -and $repoFull) {
+if ((Get-Command gh -ErrorAction SilentlyContinue) -and $repoFull) {
   Write-Host "`nTentando listar webhooks via gh..."
   try {
     $hooksJson = gh api repos/$repoFull/hooks 2>$null
