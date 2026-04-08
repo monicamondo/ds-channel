@@ -24,7 +24,8 @@
     --chn-table-row-alt: var(--chn-color-gray-100);
     --chn-table-selected: var(--chn-color-success-bg);
     --chn-pagination-bg: var(--chn-color-gray-400);
-    --chn-modal-bg: #F5F5DC; /* Specific legacy color */
+    --chn-modal-bg: #F5F5DC;
+    /* Specific legacy color */
     --chn-modal-title-bg: var(--chn-color-navbar);
     --chn-btn-bg: var(--chn-color-gray-300);
     --chn-btn-border: #A0A0A0;
@@ -181,7 +182,7 @@
 .legacy-pagination-pages {
     background: #cccccc;
     border: 1px solid #b9b9b9;
-    padding: 0 4px;
+    padding: 0px;
 }
 
 /* Modal */
