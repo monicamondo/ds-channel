@@ -137,18 +137,19 @@
     }
 
     /* ─── Tabela (base do DS) ──────────────────── */
-    .legacy-table td.col-order {
-      width: 70px;
+    .legacy-table td.col-order,
+    .legacy-table th.col-order {
+      width: 1%;
+      white-space: nowrap;
+      min-width: 60px;
     }
 
-    .legacy-table td.col-acoes {
-      width: 120px;
-      text-align: center;
-    }
-
+    .legacy-table td.col-acoes,
     .legacy-table th.col-acoes {
+      width: 1%;
+      white-space: nowrap;
+      min-width: 110px;
       text-align: center;
-      width: 120px;
     }
 
     /* ─── Filtros inline ───────────────────────── */

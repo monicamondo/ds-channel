@@ -140,13 +140,13 @@ export const PadraoCompleta = {
         <table class="legacy-table">
           <thead>
             <tr style="background:#E5E5E5">
-              <th style="width:30px; text-align:center">Associar</th>
-              <th style="width:80px">Código</th>
+              <th class="col-min" style="text-align:center">Associar</th>
+              <th class="col-min">Código</th>
               <th>Nome</th>
-              <th style="width:150px">Gestor</th>
-              <th style="width:100px">Status</th>
-              <th style="width:100px">Data Limite</th>
-              <th style="width:80px; text-align:center">Ações</th>
+              <th>Gestor</th>
+              <th>Status</th>
+              <th>Data Limite</th>
+              <th class="col-min" style="text-align:center">Ações</th>
             </tr>
             <tr style="background:#F5F5F5">
               <td style="text-align:center"><input type="checkbox"/></td>
@@ -233,11 +233,11 @@ export const AcordeonConfigurado = {
       <table class="legacy-table">
         <thead>
           <tr>
-            <th style="width:30px"></th>
+            <th class="col-min"></th>
             <th>Nome do Objetivo</th>
-            <th style="width:120px">Tipo</th>
-            <th style="width:120px">Perspectiva</th>
-            <th style="width:120px; text-align:center">Ações</th>
+            <th>Tipo</th>
+            <th>Perspectiva</th>
+            <th class="col-min" style="text-align:center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -294,13 +294,13 @@ export const ComSubmenuAcoes = {
           <thead>
             <!-- Cabeçalho de colunas -->
             <tr style="background:#E5E5E5;">
-              <th style="width:90px; text-align:center;">Ordem <span class="fa fa-sort"
+              <th class="col-min" style="text-align:center;">Ordem <span class="fa fa-sort"
                   style="font-size:9px;color:#999;"></span></th>
               <th>Nome</th>
-              <th style="width:200px;">Perspectiva</th>
-              <th style="width:160px;">Responsável</th>
-              <th style="width:70px; text-align:center;">Peso</th>
-              <th class="col-acoes">Ações</th>
+              <th>Perspectiva</th>
+              <th>Responsável</th>
+              <th class="col-min" style="text-align:center;">Peso</th>
+              <th class="col-min" style="text-align:center;">Ações</th>
             </tr>
             <!-- Linha de filtros -->
             <tr style="background:#F5F5F5;">

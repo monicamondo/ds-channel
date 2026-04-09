@@ -23,14 +23,15 @@
   margin-bottom: var(--chn-margin-xs);
 }
 
-/* Ensure the table doesn't compress too much when inside the responsive wrapper */
+/* Por padrão, a tabela dentro do wrapper tenta ocupar 100% da largura disponível.
+   O scroll horizontal só aparecerá se o conteúdo mínimo das colunas exceder o container. */
 .chn-table-responsive .legacy-table {
-  min-width: 1000px; /* Default minimum width for complex tables in DS */
+  min-width: unset; 
   border: none !important;
 }
 
 .chn-table-responsive .legacy-pagination {
-  min-width: 1000px;
+  min-width: unset;
   border: none;
   border-top: 1px solid var(--chn-color-gray-400);
 }
@@ -46,6 +47,13 @@
   text-align: left;
   font-weight: var(--chn-font-weight-bold);
   color: var(--chn-color-black);
+  white-space: nowrap; /* Mantém cabeçalhos em uma linha onde possível */
+}
+
+/* Colunas específicas protegidas contra compressão excessiva */
+.legacy-table th.col-min, 
+.legacy-table td.col-min {
+  width: 1%;
   white-space: nowrap;
 }
 
