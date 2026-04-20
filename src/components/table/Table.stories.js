@@ -552,3 +552,115 @@ export const ComSubmenuAcoes = {
       </div>
 `,
 };
+
+export const VersaoAngular = {
+  name: 'Versão Angular (Página)',
+  render: () => `
+    <div class="page-angular" style="font-family: Arial, sans-serif; padding: 20px;">
+      <!-- CABEÇALHO FILTROS -->
+      <div class="angular-filters-wrapper">
+        <div class="angular-filters-row">
+          <div class="angular-filter-group">
+            <label style="font-size:10px;color:#777;font-weight:bold">Nome</label>
+            <input type="text" class="angular-filter-input" />
+          </div>
+          <div class="angular-filter-group" style="flex:1.5">
+            <label style="font-size:10px;color:#777;font-weight:bold">Área</label>
+            <select class="angular-filter-select">
+              <option>Presidência</option>
+            </select>
+            <label class="angular-filter-checkbox">
+              <input type="checkbox" checked /> Incluir subáreas
+            </label>
+          </div>
+          <div class="angular-filter-group">
+            <label style="font-size:10px;color:#777;font-weight:bold">Categoria</label>
+            <select class="angular-filter-select"><option></option></select>
+          </div>
+          <div class="angular-filter-group">
+            <label style="font-size:10px;color:#777;font-weight:bold">Gestor</label>
+            <select class="angular-filter-select"><option></option></select>
+          </div>
+          <div class="angular-filter-group">
+            <label style="font-size:10px;color:#777;font-weight:bold">Data limite</label>
+            <input type="date" class="angular-filter-input" />
+          </div>
+          <div class="angular-filter-group">
+            <label style="font-size:10px;color:#777;font-weight:bold">Escolha o status</label>
+            <select class="angular-filter-select"><option></option></select>
+            <label class="angular-filter-checkbox">
+              <input type="checkbox" /> Mostrar finalizados
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA ANGULAR -->
+      <table class="angular-table">
+        <thead>
+          <tr>
+            <th style="width:30px;text-align:center"><input type="checkbox" class="angular-table-checkbox"/></th>
+            <th>Plano de ação <span class="fa fa-caret-up"></span></th>
+            <th>Data limite</th>
+            <th style="text-align:center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center"><input type="checkbox" class="angular-table-checkbox"/></td>
+            <td>
+              <span class="angular-table-tag">1</span>
+              <span class="angular-table-title">1ammm</span>
+              <span class="angular-table-subtitle">Gestor: Mayara de Souza Almeida</span>
+              <span class="angular-table-subtitle">Área: Presidência</span>
+              <span class="angular-table-subtitle">Categoria: Tipo de Ação 2</span>
+            </td>
+            <td>
+              <span class="angular-status rascunho">Rascunho</span>
+              <span class="angular-overdue">1586 dias atrasado <i class="fa fa-calendar"></i></span>
+            </td>
+            <td style="text-align:center">
+              <button class="angular-action-btn"><i class="fa fa-cog"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:center"><input type="checkbox" class="angular-table-checkbox"/></td>
+            <td>
+              <span class="angular-table-tag">@@ may branch ck</span>
+              <span class="angular-table-title">@ teste may branch ck</span>
+              <span class="angular-table-subtitle">Gestor: Mayara de Souza Almeida</span>
+              <span class="angular-table-subtitle">Área: Presidência</span>
+              <span class="angular-table-subtitle">Categoria: TESTE</span>
+              <span class="angular-table-subtitle" style="color:#aba">Indicadores: 0509-2,aa may...</span>
+            </td>
+            <td>
+              <span class="angular-status andamento">Em andamento</span>
+              <span class="angular-overdue">1669 dias atrasado <i class="fa fa-calendar"></i></span>
+            </td>
+            <td style="text-align:center">
+              <button class="angular-action-btn"><i class="fa fa-cog"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PAGINAÇÃO ANGULAR -->
+      <div class="angular-pagination">
+        <div class="angular-pagination-controls">
+          <button class="angular-pagination-btn" disabled>&laquo;</button>
+          <button class="angular-pagination-btn" disabled>&lsaquo;</button>
+          <button class="angular-pagination-btn is-active">1</button>
+          <button class="angular-pagination-btn">&rsaquo;</button>
+          <button class="angular-pagination-btn">&raquo;</button>
+        </div>
+        <div>
+          <select class="angular-pagination-select">
+            <option>10 itens por página</option>
+            <option>25 itens por página</option>
+            <option>50 itens por página</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  `
+};

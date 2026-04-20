@@ -311,3 +311,183 @@
 .legacy-action-submenu-item img {
   width: 16px;
 }
+
+/* --- ANGULAR VERSION (page-angular) --- */
+.angular-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--chn-font-family);
+  font-size: 11px;
+  background: #fff;
+}
+
+.angular-table thead tr {
+  background: #F3F3F3;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.angular-table th {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 500;
+  color: #777;
+  border: none;
+}
+
+.angular-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #EAEAEA;
+  border-right: none;
+  vertical-align: top;
+  color: #555;
+}
+
+.angular-table tbody tr:hover {
+  background: #F9F9F9;
+}
+
+.angular-table-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.angular-table-subtitle {
+  font-size: 10px;
+  color: #888;
+  display: block;
+  line-height: 1.5;
+}
+
+.angular-table-tag {
+  display: inline-block;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+  padding: 1px 4px;
+  font-size: 9px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.angular-status {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+}
+.angular-status.rascunho { background: #606970; }
+.angular-status.andamento { background: #267DD3; }
+
+.angular-overdue {
+  color: #E7000B;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.angular-action-btn {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+}
+.angular-action-btn:hover { color: #333; }
+
+/* ANGULAR PAGINATION */
+.angular-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  font-family: var(--chn-font-family);
+  font-size: 11px;
+}
+
+.angular-pagination-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.angular-pagination-btn {
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  color: #666;
+  font-size: 11px;
+  cursor: pointer;
+  border-right: 1px solid #ccc;
+}
+.angular-pagination-btn:last-child {
+  border-right: none;
+}
+.angular-pagination-btn:hover {
+  background: #f0f0f0;
+}
+.angular-pagination-btn.is-active {
+  background: #5A6268;
+  color: #fff;
+}
+
+.angular-pagination-select {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  border-radius: 2px;
+  color: #555;
+  font-size: 11px;
+  background: #fff;
+  outline: none;
+}
+
+/* ANGULAR FILTERS */
+.angular-filters-wrapper {
+  background: #F9F9F9;
+  border: 1px solid #E0E0E0;
+  border-bottom: none;
+  padding: 10px 12px;
+  font-family: var(--chn-font-family);
+}
+
+.angular-filters-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.angular-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.angular-filter-input,
+.angular-filter-select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 0 6px;
+  height: 24px;
+  font-size: 11px;
+  color: #333;
+  outline: none;
+}
+
+.angular-filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #777;
+  margin-top: 2px;
+}
